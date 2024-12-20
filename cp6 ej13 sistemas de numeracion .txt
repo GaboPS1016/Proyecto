@@ -1,0 +1,32 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Schema;
+public class Program
+{  
+    public static int Find(char letter, char[] arr)
+    {
+        
+        for (int l = 0; l < arr.Length; l++)
+        {
+            if (arr[l] == letter) return l;
+        }
+        return 0;
+        
+    }
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Introduzca una combinacion de a, b, c: ");
+        string cadena = Console.ReadLine()!;
+        int sum = 0;
+        char[] digitosBase = new char[] { 'a','b','c'};
+        int x = cadena.Length-1;
+        for (int z = 0; z<cadena.Length; z++)
+        {
+            //if (x<0) break;
+            sum += Find(cadena[z], digitosBase) * (int)Math.Pow(x, digitosBase.Length);
+            x--;
+        }
+        Console.WriteLine(sum);
+    }
+}
